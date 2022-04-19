@@ -101,6 +101,7 @@ async function run() {
       await desktopPage.goto(url, { waitUntil: 'networkidle0' });
       for (const { width, height } of DEFAULT_DESKTOP_VIEWPOINT_RATIO) {
         await desktopPage.setViewport({ width, height });
+        await new Promise((r) => setTimeout(r, 2000));
         await desktopPage.screenshot({
           path: `${PATH}desktopPage${width}x${height}-${POST_FIX}.${screenshotType}`,
           fullPage,
